@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Rugs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+       <th>Date</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rugs.each do |rug| %>
+      <tr>
+        <td><%= rug.name %></td>
+        <td><%= rug.date %></td>
+
+        <td><%= link_to 'Show', rug %></td>
+        <td><%= link_to 'Edit', edit_rug_path(rug) %></td>
+        <td><%= link_to 'Destroy', rug, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rug', new_rug_path %>
+<%= @rugs.each { |x| x } %>

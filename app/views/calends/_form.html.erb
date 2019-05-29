@@ -1,0 +1,22 @@
+<%= simple_form_for(@calend) do |form| %>
+  <% if @calend.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@calend.errors.count, "error") %> prohibited this calend from being saved:</h2>
+
+      <ul>
+      <% @calend.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <h4>Select Month and Year To View</h4><br>
+    <h3><%= form.date_select :dater, :discard_day => true, class: 'form-control' %></h3>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "View Requested Month in Calendar", class: 'btn btn-primary' %>
+  </div>
+<% end %>

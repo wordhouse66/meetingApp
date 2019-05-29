@@ -1,0 +1,27 @@
+<%= form_with(model: rangex, local: true) do |form| %>
+  <% if rangex.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rangex.errors.count, "error") %> prohibited this rangex from being saved:</h2>
+
+      <ul>
+      <% rangex.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :start %>
+    <%= form.datetime_select :start %>
+  </div>
+
+  <div class="field">
+    <%= form.label :finish %>
+    <%= form.datetime_select :finish %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

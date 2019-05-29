@@ -1,0 +1,4 @@
+class Rangex < ApplicationRecord
+
+	
+end

@@ -1,0 +1,22 @@
+<%= form_with(model: ranger, local: true) do |form| %>
+  <% if ranger.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(ranger.errors.count, "error") %> prohibited this ranger from being saved:</h2>
+
+      <ul>
+      <% ranger.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :start %>
+    <%= form.text_field :start %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

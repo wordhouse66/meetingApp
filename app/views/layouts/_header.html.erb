@@ -1,0 +1,74 @@
+<nav class="navbar navbar-default navbar-static-top col-lg-12 " style="background-color: #33DAFF;">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display
+    -->
+    <div class="navbar-header">
+      <button class="navbar-toggle collapsed" data-target="#main-nav" data-toggle="collapse" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "MeetingApp", root_path, class: "navbar-brand", style: "color: white;" %>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling
+    -->
+    <div class="collapse navbar-collapse" id="main-nav">
+      <%= form_tag search_clients_path, method: :get, class: "navbar-form navbar-left" do %>
+      <p>
+        <%= text_field_tag :search, params[:search], class: 'form-control' %>
+        <%= submit_tag 'Search', name: nil, class: "btn btn-default"%>
+      </p>
+      <% end %>
+      <!--<button style="margin: 10px;" class="btn btn-danger" type="submit"><i class="fa fa-search"></i> <%= link_to " Find a Model", style: "color:white;"%> </button>-->
+        
+         
+        
+      <% if user_signed_in? %>
+      <ul class="nav navbar-nav navbar-right">
+        <li><button style="margin: 10px;" class="btn btn-primary" type="submit"><i class="fa fa-search"></i><%= link_to " Calendar", calends_path, style: "color:white;"%></button> </li>
+        <li><button style="margin: 10px;" class="btn btn-danger" type="submit"><i class="fa fa-search"></i><%= link_to " Clients", clients_path, style: "color:white;"%></button> </li>
+        <li><button style="margin: 10px;" class="btn btn-danger" type="submit"><i class="fa fa-search"></i><%= link_to " Meetings", meetings_path, style: "color:white;"%></button> </li>
+        <li class="dropdown">
+
+            
+
+
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <p><%=current_user.email%></p>
+        </button>
+  
+
+
+
+
+          
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            
+          
+            <li><%= link_to "Edit Profile", edit_user_registration_path  %></li>
+            
+            <li><%= link_to "Log out.", destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
+          
+        <li><%= link_to "Log out.", destroy_user_session_path, method: :delete, style:"color: white;" %></li>
+        
+      </ul>
+      <% else %>
+        <ul class="nav navbar-nav navbar-right">
+          
+            <li><%= link_to "Sign Up", new_user_registration_path, style:"color: white;"  %>
+          </li>
+          <li>
+            <%= link_to "Log in", new_user_session_path, style:"color: white;"  %>
+          </li>
+        </ul>
+      <% end %>
+    
+    </div>
+  </div>
+</nav>
+
+
+
