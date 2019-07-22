@@ -42,7 +42,7 @@ gem 'jquery-ui-rails'
 # gem 'mini_magick', '~> 4.8'
 #gem 'datetime_picker_input' 
 gem 'simple_form'
-
+gem 'bonsai-elasticsearch-rails', '~> 0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
