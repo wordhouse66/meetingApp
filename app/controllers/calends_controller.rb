@@ -1,6 +1,6 @@
 class CalendsController < ApplicationController
   before_action :set_calend, only: [:show, :edit, :update, :destroy]
-
+  before_action :restrict_user, except: [:index, :show]
   # GET /calends
   # GET /calends.json
   def index
@@ -63,10 +63,19 @@ class CalendsController < ApplicationController
     end
   end
 
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_calend
       @calend = Calend.find(params[:id])
+    end
+
+    def restrict_user
+      unless current_user.has_role? :admin
+        redirect_to root_path,
+        notice: "you can't do that"
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
