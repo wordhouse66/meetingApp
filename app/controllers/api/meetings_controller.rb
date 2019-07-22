@@ -1,4 +1,4 @@
-class MeetingsController < ApplicationController
+class Api::MeetingsController < ApplicationController
   before_action :set_meeting, only: [ :show, :edit, :update, :destroy]
 
   # GET /meetings
@@ -6,6 +6,7 @@ class MeetingsController < ApplicationController
   def index
     @client = Client.find(params[:client_id])
     @meetings = @client.meetings
+    render json: @meetings
   end
 
   def all_meetings

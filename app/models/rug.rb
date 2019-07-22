@@ -1,2 +1,0 @@
-class Rug < ApplicationRecord
-end

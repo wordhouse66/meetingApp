@@ -6,7 +6,7 @@ class CalendsController < ApplicationController
   def index
     @calends = Calend.all
     @meetings = Meeting.where(:user_id => current_user.id)
-@calend = Calend.new(params[:dater])
+    @calend = Calend.new(params[:dater])
   end
 
   # GET /calends/1

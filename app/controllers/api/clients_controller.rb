@@ -1,6 +1,6 @@
-class ClientsController < ApplicationController
-  # before_action :set_client, only: [ :show, :edit, :update, :destroy]
-  # before_action :authenticate_user!
+class Api::ClientsController < ApplicationController
+  before_action :set_client, only: [ :show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   # GET /clients
   # GET /clients.json
   
@@ -8,6 +8,8 @@ class ClientsController < ApplicationController
 
   def index
     @clients = current_user.clients
+    render json: @clients
+
   end
 
   def search
@@ -25,7 +27,9 @@ class ClientsController < ApplicationController
   def show
     @client = Client.find(params[:id])
     @meetings = @client.meetings
-  
+    render json: @client
+    render json: @meetings
+    
   end
 
   # GET /clients/new
@@ -83,8 +87,8 @@ class ClientsController < ApplicationController
       @client = current_user.clients.find(params[:id])
     end
 
-    def correct_user
-    authenticate_user!
+  def correct_user 
+      authenticate_user!
     if @client.user_id != current_user.id
       redirect_to clients_path
       flash[:notice] = 'You do not have enough permissions to do this'
